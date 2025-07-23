@@ -75,7 +75,7 @@ For each table, a set of columns (attributes) was defined along with appropriate
 
 The database structure is now clearly defined, showing how tables relate to each other through keys and relationships. This prepares the foundation for the next phase: creating the actual tables in SQL Server.
 
-## 🔍 Phase 3: Data Profiling and Type Selection
+## 🔍 [Phase 3: Data Profiling and Type Selection](Data%20Profiling%20and%20Type%20Selection.sql)
 
 Before creating the actual database tables, an essential step was to **profile the raw data** in order to assign the most accurate data types for each column. This ensured data consistency and optimal storage when building the schema in SQL Server.
 
@@ -111,7 +111,8 @@ A full data type map was created for every field in the dataset, which was then 
 
 
 
-## 🧱 Phase 4: Database and Table Creation
+## 🧱 [Phase 4: Database and Table Creation](Database%20Schema%20Creation.sql)
+
 
 This phase marks the transition from design to implementation. Based on the results of the **Data Modeling** and **Type Selection** phases, the actual database and its tables were created using T-SQL scripts in SQL Server.
 
@@ -157,7 +158,8 @@ Data types were chosen based on earlier profiling:
 
 The schema was successfully deployed into SQL Server. All table structures, constraints, and relationships were implemented in alignment with the planned ERD and data types. This foundational step enabled the smooth import and transformation of data in the following phase.
 
-## 🔄 Phase 5: Data Import and Transformation Using SSIS
+## 🔄[Phase 5: Data Import and Transformation Using SSIS](Data%20Import%20and%20Transformation%20Using%20SSIS/)
+
 
 After completing the schema design and table creation, this phase focused on importing raw data from external CSV files into SQL Server using **SQL Server Integration Services (SSIS)**. The process included configuring control and data flows, applying transformations, and indexing key columns.
 
@@ -236,7 +238,8 @@ Each data flow task included multiple transformations:
 ---
 
 
-## 🧪 Phase 6: Data Validation and Performance Verification
+## 🧪 [Phase 6: Data Validation and Performance Verification](Data%20Validation%20and%20Performance%20Verification.sql)
+
 
 After the ETL process was completed and data was loaded into SQL Server, a set of validation queries were executed to ensure data integrity, completeness, and proper linkage between the tables. Additionally, performance observations were recorded to assess the responsiveness of the database during testing.
 
@@ -310,7 +313,8 @@ No orphan records were found, meaning the relationship is fully intact.
 All data quality and integrity checks were successfully passed. The database is now confirmed to be clean, relationally consistent, and performant, making it ready for analytical queries and reporting.
 
 
-## 📊 Phase 7: Customer Spending Insights Using SQL Analytics
+## 📊[Phase 7: Customer Spending Insights Using SQL Analytics](Customer%20Spending%20Insights%20Using%20SQL%20Analytics.sql)
+
 
 In this phase, we utilized **T-SQL queries** to extract insights from the cleaned and structured data. The analysis aimed to understand customer behavior by joining multiple tables, applying aggregations, and ranking customers based on spending patterns.
 
@@ -426,7 +430,8 @@ The results of this phase provide deep insight into:
 
 This data-driven understanding empowers decision-makers to optimize offers, personalize customer experiences, and identify high-value segments effectively.
 
-## 🔐 Phase 8: Basic Security Configuration and Backup Execution
+## 🔐[Phase 8: Basic Security Configuration and Backup Execution](Basic%20Security%20Configuration%20and%20Backup%20Execution/)
+
 
 In this final phase, two key administrative tasks were performed to protect the data and manage recovery:
 
