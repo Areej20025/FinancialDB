@@ -36,7 +36,7 @@ Three main tables were identified as the foundation of the database:
 
 ---
 
-### 2. Designing Relationships (ER Diagram)
+### 2. Designing Relationships (ER Model)
 
 Relationships were defined based on data flow and business logic:
 
