@@ -44,7 +44,7 @@ Relationships were defined based on data flow and business logic:
 - **Cards → Transactions**: One-to-Many — each card can be used for multiple transactions.
 - **Users → Transactions**: One-to-Many — each user can perform multiple transactions directly (via `client_id`).
 
-**📸 ER Diagram – Logical Relationships and Cardinality**
+**📸 Entity-Relationship Model (ER Model)**
 
 <img src="IMAGE/ER Diagram.png" width="600"/>
 ---
@@ -65,7 +65,7 @@ For each table, a set of columns (attributes) was defined along with appropriate
   - **Cards**: `card_type`, `card_brand`, `credit_limit`, `has_chip`, `expires`, etc.
   - **Transactions**: `amount`, `merchant_id`, `zip`, `date`, `mcc`, `use_chip`, etc.
 
-📸 **ER Diagram – Logical Relationships and Cardinality**
+📸 **Entity Relationship Diagram (ERD)**
 
 <img src="IMAGE/Entity Relationship Diagram (ERD).png" width="600"/>
 
