@@ -1,21 +1,3 @@
-FinancialDB/
-├─ phase-1/               # ملفات المشروع الأول كما هي
-│  ├─ sql/
-│  ├─ ssis/
-│  ├─ analytics/
-│  └─ README.md
-├─ phase-2/               # ملفات المشروع الثاني
-│  ├─ triggers/
-│  ├─ indexes/
-│  ├─ views/
-│  ├─ stored-procedures/
-│  ├─ udfs/
-│  ├─ temp-tables/
-│  ├─ ctes/
-│  ├─ transactions/
-│  └─ README.md
-└─ README.md              # وصف عام للمستودع
-
 ## 🧠 Phase 1: Project Introduction & Dataset Overview
 
 This project demonstrates the development of a complete **ETL pipeline** and **analytical database system** using SQL Server and SSIS to process and analyze financial transaction data. The main goal is to clean, integrate, and analyze customer, card, and transaction records to extract business insights and support informed decision-making.
