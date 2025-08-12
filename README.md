@@ -1,4 +1,16 @@
-## 🧠 Phase 1: Project Introduction & Dataset Overview
+## Table of Contents
+- [Phase 1: Project Introduction & Dataset Overview](#phase-1-project-introduction--dataset-overview)
+- [Phase 2: Data Modeling](#phase-2-data-modeling)
+- [Phase 3: Data Profiling and Type Selection](#phase-3-data-profiling-and-type-selection)
+- [Phase 4: Database and Table Creation](#phase-4-database-and-table-creation)
+- [Phase 5: Data Import and Transformation Using SSIS](#phase-5-data-import-and-transformation-using-ssis)
+- [Phase 6: Data Validation and Performance Verification](#phase-6-data-validation-and-performance-verification)
+- [Phase 7: Customer Spending Insights Using SQL Analytics](#phase-7-customer-spending-insights-using-sql-analytics)
+- [Phase 8: Basic Security Configuration and Backup Execution](#phase-8-basic-security-configuration-and-backup-execution)
+- [Phase 9: Advanced SQL Implementation](#phase-9-advanced-sql-implementation)
+- [Conclusion](#conclusion)
+
+##  Phase 1: Project Introduction & Dataset Overview
 
 This project demonstrates the development of a complete **ETL pipeline** and **analytical database system** using SQL Server and SSIS to process and analyze financial transaction data. The main goal is to clean, integrate, and analyze customer, card, and transaction records to extract business insights and support informed decision-making.
 
@@ -19,7 +31,7 @@ This project demonstrates the development of a complete **ETL pipeline** and **a
   * `cards_data.csv`: credit/debit card details
   * `users_data.csv`: customer demographics and account data
 
-## 🧩 Phase 2: Data Modeling
+##  Phase 2: Data Modeling
 
 This phase focuses on designing the conceptual and logical structure of the database before implementing any actual tables. It includes identifying tables, defining relationships, and visualizing them using diagrams.
 
@@ -43,7 +55,7 @@ Relationships were defined based on data flow and business logic:
 - **Cards → Transactions**: One-to-Many — each card can be used for multiple transactions.
 - **Users → Transactions**: One-to-Many — each user can perform multiple transactions directly (via `client_id`).
 
-**📸 Entity-Relationship Model (ER Model)**
+** Entity-Relationship Model (ER Model)**
 
 <img src="IMAGE/ER Diagram.png" width="600"/>
 ---
@@ -70,11 +82,11 @@ For each table, a set of columns (attributes) was defined along with appropriate
 
 ---
 
-### ✅ Outcome
+###  Outcome
 
 The database structure is now clearly defined, showing how tables relate to each other through keys and relationships. This prepares the foundation for the next phase: creating the actual tables in SQL Server.
 
-## 🔍 [Phase 3: Data Profiling and Type Selection](Data%20Profiling%20and%20Type%20Selection.sql)
+##  [Phase 3: Data Profiling and Type Selection](Data%20Profiling%20and%20Type%20Selection.sql)
 
 Before creating the actual database tables, an essential step was to **profile the raw data** in order to assign the most accurate data types for each column. This ensured data consistency and optimal storage when building the schema in SQL Server.
 
@@ -104,13 +116,13 @@ This profiling process prepared the foundation for building a normalized and eff
 
 ---
 
-### ✅ Outcome:
+###  Outcome:
 
 A full data type map was created for every field in the dataset, which was then directly applied in the table creation scripts. This step ensured smooth data loading and minimized type conversion issues in later ETL stages.
 
 
 
-## 🧱 [Phase 4: Database and Table Creation](Database%20Schema%20Creation.sql)
+##  [Phase 4: Database and Table Creation](Database%20Schema%20Creation.sql)
 
 
 This phase marks the transition from design to implementation. Based on the results of the **Data Modeling** and **Type Selection** phases, the actual database and its tables were created using T-SQL scripts in SQL Server.
@@ -153,11 +165,11 @@ Data types were chosen based on earlier profiling:
 * `DECIMAL` for financial values (e.g., `amount`, `credit_limit`)
 * `CHAR` for fixed values (e.g., `gender`, `use_chip`)
 
-### ✅ Outcome
+###  Outcome
 
 The schema was successfully deployed into SQL Server. All table structures, constraints, and relationships were implemented in alignment with the planned ERD and data types. This foundational step enabled the smooth import and transformation of data in the following phase.
 
-## 🔄[Phase 5: Data Import and Transformation Using SSIS](Data%20Import%20and%20Transformation%20Using%20SSIS/)
+## [Phase 5: Data Import and Transformation Using SSIS](Data%20Import%20and%20Transformation%20Using%20SSIS/)
 
 
 After completing the schema design and table creation, this phase focused on importing raw data from external CSV files into SQL Server using **SQL Server Integration Services (SSIS)**. The process included configuring control and data flows, applying transformations, and indexing key columns.
@@ -169,7 +181,7 @@ After completing the schema design and table creation, this phase focused on imp
 - A new **SSIS project** was created in SQL Server Data Tools (SSDT).
 - The **Control Flow** pane was configured using **Sequence Containers** to group logical operations such as clearing tables, transforming data, and loading it into SQL Server.
 
-📸 **Control Flow – Organizing the Data Load and Index Creation**
+ **Control Flow – Organizing the Data Load and Index Creation**
 <img src="IMAGE/SSIS Control Flow Sequential Load and Index Creation.png" width="600"/>
 
 ---
@@ -192,15 +204,15 @@ Each data flow task included multiple transformations:
 - **Data Conversion**: Converting column types (e.g., `VARCHAR` to `INT`, `CHAR` to `BIT`).
 - **Conditional Split** (Card Data only): Filtering valid and invalid CVV entries and exporting invalid rows separately.
 
-📸 **User Data Flow in SSIS**
+ **User Data Flow in SSIS**
 
 <img src="IMAGE/User Data Flow in SSIS From Flat File to SQL Table.png" width="400"/>
 
-📸 **Card Data Flow in SSIS with CVV Validation**
+ **Card Data Flow in SSIS with CVV Validation**
 
 <img src="IMAGE/Card Data Flow in SSIS From Flat File to SQL Table.png" width="400"/>
 
-📸 **Transaction Data Flow in SSIS with Lookup Validation**
+ **Transaction Data Flow in SSIS with Lookup Validation**
 
 <img src="IMAGE/Transaction Data Flow in SSIS From Flat File to SQL Table.png" width="400"/>
 
@@ -222,12 +234,12 @@ Each data flow task included multiple transformations:
   - `IX_merchant_id`
   - `IX_merchant_city_zip`
 
-📸 **Parallel Index Creation in SSIS**
+ **Parallel Index Creation in SSIS**
 <img src="IMAGE/SSIS Sequence – Parallel Index Creation on Transaction Table.png" width="400"/>
 
 
 
-### ✅ Outcome
+###  Outcome
 
 - All data was successfully imported, transformed, and validated within SQL Server.
 - Invalid rows (e.g., cards with invalid CVV) were separated for reporting.
@@ -237,7 +249,7 @@ Each data flow task included multiple transformations:
 ---
 
 
-## 🧪 [Phase 6: Data Validation and Performance Verification](Data%20Validation%20and%20Performance%20Verification.sql)
+##  [Phase 6: Data Validation and Performance Verification](Data%20Validation%20and%20Performance%20Verification.sql)
 
 
 After the ETL process was completed and data was loaded into SQL Server, a set of validation queries were executed to ensure data integrity, completeness, and proper linkage between the tables. Additionally, performance observations were recorded to assess the responsiveness of the database during testing.
@@ -307,12 +319,12 @@ No orphan records were found, meaning the relationship is fully intact.
 
 ---
 
-### ✅ Outcome
+###  Outcome
 
 All data quality and integrity checks were successfully passed. The database is now confirmed to be clean, relationally consistent, and performant, making it ready for analytical queries and reporting.
 
 
-## 📊[Phase 7: Customer Spending Insights Using SQL Analytics](Customer%20Spending%20Insights%20Using%20SQL%20Analytics.sql)
+## [Phase 7: Customer Spending Insights Using SQL Analytics](Customer%20Spending%20Insights%20Using%20SQL%20Analytics.sql)
 
 
 In this phase, we utilized **T-SQL queries** to extract insights from the cleaned and structured data. The analysis aimed to understand customer behavior by joining multiple tables, applying aggregations, and ranking customers based on spending patterns.
@@ -419,7 +431,7 @@ FROM (
 
 ---
 
-### ✅ Outcome
+###  Outcome
 
 The results of this phase provide deep insight into:
 
@@ -429,7 +441,7 @@ The results of this phase provide deep insight into:
 
 This data-driven understanding empowers decision-makers to optimize offers, personalize customer experiences, and identify high-value segments effectively.
 
-## 🔐[Phase 8: Basic Security Configuration and Backup Execution](Basic%20Security%20Configuration%20and%20Backup%20Execution/)
+## [Phase 8: Basic Security Configuration and Backup Execution](Basic%20Security%20Configuration%20and%20Backup%20Execution/)
 
 
 In this final phase, two key administrative tasks were performed to protect the data and manage recovery:
@@ -455,29 +467,80 @@ This ensures controlled access to data and supports role-based security.
 
 Two types of backups were performed on the database:
 
-* ✅ **Full Backup**: A complete backup of the entire `FinancialData` database was saved to a local disk.
-* ✅ **Differential Backup**: Captured only the changes made since the last full backup, optimizing backup size and duration.
+*  **Full Backup**: A complete backup of the entire `FinancialData` database was saved to a local disk.
+*  **Differential Backup**: Captured only the changes made since the last full backup, optimizing backup size and duration.
 
 These actions ensure that data can be restored safely in case of system failure or data loss.
 
 ---
 
-### ✅ Outcome
+###  Outcome
 
 * Role-based access was implemented for a test user (`Areej`) with flexible permission control.
 * Manual full and differential backups were executed successfully and stored in a safe local directory.
 
 The database is now equipped with essential access and recovery configurations suitable for controlled internal use.
+## [Phase 9: Advanced SQL Implementation](https://github.com/Areej20025/FinancialDB/tree/ae8fbcc314813e360761252eb312aab7d5bde5d2/Advanced%20SQL%20Implementation)
 
-## 🏁 Conclusion
+This section demonstrates the implementation of advanced SQL concepts on the project database to improve performance, security, and analytical capabilities.
 
-This project represents a complete end-to-end data engineering workflow using Microsoft SQL Server and SSIS. From database design and data profiling to ETL, validation, analysis, and securing the system — every stage has been documented and implemented practically.
+### [Indexes](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/indexs)
+- [Create_Indexes_Table_Transactions.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/indexs/Create_Indexes_Table_Transactions.sql)  
+  Creates indexes to improve query performance on transaction tables:
+  - Index on `client_id` to speed up customer-related queries.
+  - Index on `merchant_id` in the analytical transactions table `FactTable_Transactions`.
+  - Composite index on `(merchant_city, zip)` to enhance geographic search.
 
-### ✅ Final Outcomes:
+### [CTEs (WITH)](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/CTEs%20(WITH))
+- [CTE_CityTransactionCount.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/CTEs%20(WITH)/CTE_CityTransactionCount.sql) — Creates a CTE named `CityTransactionSummary` to calculate the total number of transactions per city (`merchant_city`) and sort them in descending order.
+- [CTE_UserCityTransactionsCount.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/CTEs%20(WITH)/CTE_UserCityTransactionsCount.sql) — Creates a CTE named `UserCityTransactions` to count the distinct cities each user has transactions in, then shows users with transactions in more than one city.
 
-* A clean, validated database ready for reporting and analysis
-* Rich insights about customer spending trends across gender, age groups, and time
-* Structured ETL pipelines that transform and load data efficiently
-* Role-based access control and backup plans in place
+### [Set Operations](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/Set%20Operations)
+- [SetOperations_UsersAndCards.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Set%20Operations/SetOperations_UsersAndCards.sql)  
+  Demonstrates set operations on user and card data:
+  - `UNION` — Merge users with credit or debit cards, removing duplicates.
+  - `UNION ALL` — Merge the same lists while keeping duplicates.
+  - `INTERSECT` — Get users who have both credit and debit cards.
+  - `EXCEPT` — Get users who have credit cards but no debit cards.
 
-This implementation provides a strong foundation for further business intelligence integrations, such as Power BI dashboards, fraud detection models, or customer segmentation strategies.
+### [Stored Procedures](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/Stored%20Procedures)
+- [SP_GetUserDetailsByID.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Stored%20Procedures/SP_GetUserDetailsByID.sql) — Returns details of a specific user (ID, age, income, debts).
+- [SP_GetUsersExceedingCreditLimit.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Stored%20Procedures/SP_GetUsersExceedingCreditLimit.sql) — Lists users who have exceeded their credit limit.
+- [SP_GetUserTotalSpent.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Stored%20Procedures/SP_GetUserTotalSpent.sql) — Calculates the total amount spent by a specific user.
+- [SP_GetUserTransactions.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Stored%20Procedures/SP_GetUserTransactions.sql) — Displays all transactions for a specific user with details.
+
+### [Temp Tables](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/Temp%20Tables)
+- [TempTable_LatestTransaction.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Temp%20Tables/TempTable_LatestTransaction.sql) — Creates a temporary table `#LatestTransactions` to store the latest transaction date for each user.
+- [TempTable_UserTotalSpent.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Temp%20Tables/TempTable_UserTotalSpent.sql) — Creates a temporary table `#UserTotalSpent` to store the total spending per user.
+
+### [Transactions](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/Transactions)
+- [Transaction_CheckAndInsert.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Transactions/Transaction_CheckAndInsert.sql)  
+  Implements `BEGIN/COMMIT/ROLLBACK` logic to check the card balance before inserting a purchase:
+  - If the amount ≤ available balance → Insert transaction, update balance, then COMMIT.
+  - If the amount > available balance → ROLLBACK the transaction.
+
+### [Triggers](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/Triggers)
+- [Trigger_UpdateUserAge_with_Audit.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Triggers/Trigger_UpdateUserAge_with_Audit.sql) — Updates the user’s age when `birth_year` changes and logs the change in `UserAuditLog`.
+- [Trigger_UpdateUserCardCount_with_Audit.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Triggers/Trigger_UpdateUserCardCount_with_Audit.sql) — Updates `num_credit_cards` when a new card is added and logs the change in `CardCountAuditLog`.
+
+### [UDFs (User Defined Functions)](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/UDFs(user%20defined%20functions))
+- [UDF_GetTotalTransactionsByCard.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/UDFs(user%20defined%20functions)/UDF_GetTotalTransactionsByCard.sql) — Returns the total number of transactions made with a specific card.
+- [UDF_GetUserAge.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/UDFs(user%20defined%20functions)/UDF_GetUserAge.sql) — Returns the current age based on birth year.
+
+### [Views](https://github.com/Areej20025/FinancialDB/tree/main/Advanced%20SQL%20Implementation/Views)
+- [View_Transactions_2010.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Views/View_Transactions_2010.sql) — Shows all transactions made in 2010.
+- [View_UsersExceedingCreditLimit.sql](https://github.com/Areej20025/FinancialDB/blob/main/Advanced%20SQL%20Implementation/Views/View_UsersExceedingCreditLimit.sql) — Shows users who have exceeded their credit limit.
+
+## Conclusion
+
+This project now represents a complete end-to-end data engineering and advanced SQL workflow using Microsoft SQL Server and SSIS.  
+From database design, data profiling, ETL, validation, and analytics, to security configuration, backups, and advanced SQL features — every stage has been documented and implemented in practice.
+
+### Final Outcomes:
+- A clean, validated database ready for reporting and analysis.
+- Rich insights into customer spending trends across gender, age groups, and time.
+- Structured ETL pipelines that transform and load data efficiently.
+- Role-based access control and backup plans in place.
+- Implementation of advanced SQL techniques (indexes, CTEs, set operations, stored procedures, temp tables, transactions, triggers, UDFs, and views) to improve query performance, maintain data integrity, and extend analytical capabilities.
+
+This implementation provides a strong foundation for further business intelligence integrations, such as Power BI dashboards, fraud detection models, and customer segmentation strategies.
