@@ -1,3 +1,20 @@
+FinancialDB/
+├─ phase-1/               # ملفات المشروع الأول كما هي
+│  ├─ sql/
+│  ├─ ssis/
+│  ├─ analytics/
+│  └─ README.md
+├─ phase-2/               # ملفات المشروع الثاني
+│  ├─ triggers/
+│  ├─ indexes/
+│  ├─ views/
+│  ├─ stored-procedures/
+│  ├─ udfs/
+│  ├─ temp-tables/
+│  ├─ ctes/
+│  ├─ transactions/
+│  └─ README.md
+└─ README.md              # وصف عام للمستودع
 
 ## 🧠 Phase 1: Project Introduction & Dataset Overview
 
